@@ -1,0 +1,42 @@
+{% extends 'main.html' %} {% block 'content' %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Titulo</th>
+      <th scope="col">Criado</th>
+      <th scope="col">Status</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for chamado in chamados %}
+    <tr>
+      <th scope="row">{{chamado.id}}</th>
+      <td>{{chamado.title}}</td>
+      <td>{{chamado.created}}</td>
+      <td>{{chamado.status}}</td>
+      <td>
+        <a class="btn btn-primary" href="{% url 'chamado' chamado.id %}"
+          >View</a
+        >
+      </td>
+      <td>
+        <a class="btn btn-info" href="{% url 'update_chamado' chamado.id %}"
+          >Editar</a
+        >
+      </td>
+      <td>
+        <a class="btn btn-danger" href="{% url 'delete_chamado' chamado.id %}"
+          >Deletar</a
+        >
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<hr />
+<a href="{% url 'create_chamado' %}">Criar chamado</a>
+{% endblock 'content' %}

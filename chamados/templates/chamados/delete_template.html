@@ -1,0 +1,10 @@
+{% extends 'main.html' %} {% block 'content' %}
+
+<form method="POST">
+  {% csrf_token %}
+  <p>Você tem certeza que deseja deletar o chamado "{{object}}"?</p>
+  <p><a class="btn btn-warning" href="{% url 'home'%}">Voltar</a></p>
+  <p><input class="btn btn-danger" type="submit" value="Confirmar" /></p>
+</form>
+
+{% endblock 'content' %}
